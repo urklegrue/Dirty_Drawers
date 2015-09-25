@@ -1,0 +1,10 @@
+
+
+/* Dirty Classes */
+.dirty-drawer {
+    position:absolute;
+    transition:transform 0.3s;
+}
+.dirty-placement {
+    transition:none !important;
+}
