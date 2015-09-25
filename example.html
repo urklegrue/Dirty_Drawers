@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Dirty Drawers</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="dd.css">
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="dd.js"></script>
 <style>
@@ -40,6 +41,8 @@
 </style>
 </head>
 <body>
+    <hgroup></group><h1>Dirty Drawers</h1>
+    <p>A javascript class for creating sliding drawers.</p>
     <button type="button" class="dirty-button blue-button">Toggle Blue Bottom</button>
     <button type="button" class="dirty-button green-button">Toggle Green Right</button>
     <button type="button" class="dirty-button red-button">Toggle Red Top</button>
@@ -51,6 +54,41 @@
         
     </div>
     <p>Get the code in the <a href="https://github.com/bronkula/Dirty_Drawers/blob/master/example.html">Github Repository</a></p>
+
+    <h2>Instructions</h2>
+    <p>Using Dirty Drawers is fairly simple, but there are quite a lot of options.</p>
+    
+    <h3>Drawers</h3>
+    <p>eg. var drawer = new DirtyDrawer( target, attachment, openStart (,[buttons]) );</p>
+    <p>Drawers expect a couple of values when instantiated</p>
+    <dl>
+        <dt><strong>target</strong> (string)</dt>
+        <dd>Target selector. Use this to set the selector for the parent of the drawer.</dd>
+        <dt><strong>attachment</strong> (string)</dt>
+        <dd>An attachment direction. Options are: top, right, bottom, or left.</dd>
+        <dt><strong>openStart</strong> (boolean)</dt>
+        <dd>Whether to close the drawer initially. Set the initial state of the drawer.</dd>
+        <dt><strong>buttons</strong> (array) (optional)</dt>
+        <dd>List of buttons to activate drawer. These can be added individually later, using the .delegateButton() method of a DirtyDrawer.</dd>
+    </dl>
+    
+    <h3>Buttons</h3>
+    <p>eg. drawer.delegateButton({ delegatee:delegatee, func:function, delegator:delegator, event:event, mod:modification })</p>
+    <p>Buttons can be created at instantiation of Drawers, or they can be added later or dynamically with the .delegateButton() method of a DirtyDrawer.</p>
+    <dl>
+        <dt><strong>delegatee</strong> (string)</dt>
+        <dd>A selector for the button object. This will be the object that activates a DirtyDrawer.</dd></dd>
+        <dt><strong>function</strong> (string)</dt>
+        <dd>An option for which DirtyDrawer function to call. There are a number of preset functions to call. Toggle, Close, Open, Percentage, Offset, and Function</dd>
+        <dt><strong>delegator</strong> (boolean) (optional)</dt>
+        <dd>A selector for the parent object to delegate the button click to. Defaults to the body. This allows dynamic buttons to be added and removed without the need to constantly add event listeners.</dd>
+        <dt><strong>event</strong> (array) (optional)</dt>
+        <dd>The event listener to activate the DirtyDrawer. Defaults to click.</dd>
+        <dt><strong>modification</strong> (various) (optional)</dt>
+        <dd>Modification value for the Percentage, Offset, or Function methods.</dd>
+    </dl>
+    
+
 </body>
 
 
