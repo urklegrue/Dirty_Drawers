@@ -1,4 +1,4 @@
-
+;$(function(){
 // New Drawers are created by passing:
 // target - (string) target selector
 // attachment - (string) an attachment direction
@@ -77,3 +77,6 @@ DirtyDrawer.prototype.slideDistance = function(){
             return $(this.targetObject).width();
     }
 };
+window.DirtyDrawer = DirtyDrawer;
+$("body").append("<style>.dirty-placement{transition:none !important;}</style>");
+});
