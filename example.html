@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dirty Drawers</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="dd.js"></script>
+<style>
+.playground {
+    position:relative;
+    height:400px;
+    max-width:400px;
+    border:1px solid black;
+    overflow:hidden;
+}
+
+.red-drawer {
+    height:20%;
+    left:0;
+    top:0;
+    width:100%;
+    background-color:#f66;
+}
+.blue-drawer {
+    height:20%;
+    left:0;
+    bottom:0;
+    width:100%;
+    background-color:#66f;
+}
+.green-drawer {
+    height:100%;
+    right:0;
+    top:0;
+    width:50%;
+    background-color:#6f6;
+}
+
+
+/* Dirty Classes */
+.dirty-drawer {
+    position:absolute;
+    transition:transform 0.3s;
+}
+.dirty-placement {
+    transition:none !important;
+}
+</style>
+</head>
+<body>
+    <button type="button" class="dirty-button blue-button">Toggle Blue Bottom</button>
+    <button type="button" class="dirty-button green-button">Toggle Green Right</button>
+    <button type="button" class="dirty-button red-button">Toggle Red Top</button>
+    <div class="playground">
+
+        <div class="blue-drawer dirty-drawer"></div>
+        <div class="red-drawer dirty-drawer"></div>
+        <div class="green-drawer dirty-drawer"></div>
+        
+    </div>
+</body>
+
+
+<script>
+$(function(){
+
+    // Creating drawers is as easy as calling a new DirtyDrawer and passing values.
+    new DirtyDrawer(
+        ".blue-drawer", "bottom", false, [
+            { func:"Toggle", event:"click", delegatee:".blue-button" },
+            { func:"Open", event:"mouseenter", delegatee:".playground" },
+            { func:"Percentage", event:"mouseleave", delegatee:".playground", mod:0.7 }
+        ]
+    );
+    new DirtyDrawer(
+        ".green-drawer", "right", false, [{ func:"Toggle", delegator: "body", delegatee:".green-button" }]
+    );
+    new DirtyDrawer(
+        ".red-drawer", "top", true, [{ func:"Toggle", delegator: "body", delegatee:".red-button" }]
+    );
+});
+</script>
+</html>
