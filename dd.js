@@ -62,7 +62,10 @@ DirtyDrawer.prototype.slideFunction = function(mod){
     return this.slide(mod());
 };
 DirtyDrawer.prototype.slide = function(amt){
-    $(this.targetObject).css({transform:(this.isVertical?"translateY("+amt+")":"translateX("+amt+")")});
+    $(this.targetObject).css(
+        {"-webkit-transform":(this.isVertical?"translateY("+amt+")":"translateX("+amt+")")},
+        {transform:(this.isVertical?"translateY("+amt+")":"translateX("+amt+")")}
+        );
     return amt===0?true:false;
 };
 DirtyDrawer.prototype.slideDistance = function(){
