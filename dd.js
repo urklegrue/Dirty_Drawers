@@ -65,6 +65,7 @@ DirtyDrawer.prototype.slide = function(amt){
     var transform = this.isVertical ? "translateY("+amt+")" : "translateX("+amt+")";
     targetObject.css({
         "-webkit-transform":transform,
+        "-ms-transform":transform,
         "transform":transform
     });
     return amt===0?true:false;
